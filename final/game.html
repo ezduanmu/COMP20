@@ -1,0 +1,830 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>COMP 20 - FINAL PROJECT</title>
+    <style type="text/css">
+      body, html {
+        background-color: #454545;
+        color: #FFF;
+        font-family: 'Roboto', sans-serif;
+        cursor: default;
+      }
+      .container {
+        position: absolute;
+        left: 50%;
+        margin-left: -500px;
+        top: 150px;
+        width: 1000px;
+        text-align: center;
+      }
+      #wordsContainer {
+        position: relative;
+        margin-bottom: 100px;
+        margin-top: 100px;
+      }
+      .word {
+        position: relative;
+        display: inline;
+        margin: 0px 10px;
+        text-decoration: none;
+        text-align: center;
+        border-bottom: solid 7px #ad42ff;
+      }
+      .word_hover:hover {
+        color: #ffd166;
+      }
+      h2 {
+        font-size: 40px;
+      }
+      h3 {
+        font-size: 30px;
+      }
+      h4 {
+        font-size: 23px;
+      }
+      h5 {
+        font-size: 17px;
+      }
+      #scoreContainer {
+        text-align: center;
+        position: absolute;
+        width: 200px;
+        top: 225px;
+        left: -50px;
+        background-color:
+      }
+      #livesContainer {
+        text-align: center;
+        position: absolute;
+        width: 200px;
+        top: 225px;
+        right: -50px;;
+      }
+      #answersContainer {
+        position: relative;
+        margin-bottom: 100px;
+      }
+      .answerButton {
+        width: 15%;
+        color: #FFF;
+        position: relative;
+        background-color: #1f1f1f;
+        border: solid 3px #1f1f1f;
+        border-radius: 20px;
+        padding: 16px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16pt;
+        margin: 0px 10px;
+      }
+      .answerButton_hover:hover {
+        background: #808080;
+        border: solid 3px #808080;
+        border-radius: 20px;
+        color: #f7f7f7;
+        outline: none;
+        cursor: pointer;
+      }
+      .answerButton:focus {
+        outline: 0;
+      }
+      .nextButton {
+        font-size: 12pt;
+        padding: 12px 24px;
+        visibility: hidden;
+        position: relative;
+        background-color: #ad42ff;
+        border: solid 1px #ad42ff;
+        color: #f7f7f7;
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px 0px;
+        cursor: pointer;
+      }
+      .nextButton:hover {
+        background: #9000ff;
+        border: solid 1px #9000ff;
+        border-radius: 15px;
+        color: #ebebeb;
+        outline: none;
+      }
+      .nextButton:focus {
+        outline: 0;
+      }
+      #currentScore {
+        text-decoration: none;
+      }
+      #lives {
+        text-decoration: none;
+      }
+      #feedback {
+        font-family: 'Roboto', sans-serif;
+        position: absolute;
+        left: 50%;
+        margin-left: -450px;
+        top: 240px;
+        width: 900px;
+        text-align: center;
+      }
+      #instruct {
+        position: absolute;
+        left: 50%;
+        width: 300px;
+        margin-left: -150px;
+        top: -85px;
+        height: 20px;
+        font-size: 20px;
+      }
+      .wrongButton {
+        background-color: #d90024;
+        border-color: #d90024;
+      }
+      .correctButton {
+        background-color: #14b000;
+        border-color: #14b000;
+      }
+      .definition {
+        position: absolute;
+        left: 50%;
+        margin-left: -315px;
+        top: 70px;
+        width: 630px;
+        height: 95px;
+        visibility: hidden;
+        text-align: center;
+        color: #ffd166;
+        border-radius: 20px;
+      }
+      .homeButton {
+        position: absolute;
+        background-color: #878787;
+        border: solid 1px #878787;
+        border-radius: 20px;
+        color: #FFF;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 12px;
+        width: 110px;
+        height: 40px;
+        margin-left: -55px;
+        left: 50%;
+        top: 30px;
+      }
+      .homeButton_hover:hover {
+        background: #a3a3a3;
+        border: solid 1px #a3a3a3;
+        border-radius: 20px;
+        color: #FFF;
+        outline: none;
+        cursor: pointer;
+      }
+      .leaderboardButton {
+        position: absolute;
+        background-color: #878787;
+        border: solid 1px #878787;
+        border-radius: 20px;
+        color: #FFF;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 12px;
+        width: 110px;
+        height: 40px;
+        top: 30px;
+        right: 5%;
+      }
+      .leaderboardButton_hover:hover {
+        background: #a3a3a3;
+        border: solid 1px #a3a3a3;
+        border-radius: 20px;
+        color: #FFF;
+        outline: none;
+        cursor: pointer;
+      }
+      .score_box {
+        top: 0px;
+        position: absolute;
+        width:300px;
+        height:80px;
+        left: 50%;
+        margin-left: -150px;
+        font-size: 40px;
+      }
+      .unique {
+        position: absolute;
+        height: 80px;
+        width: 300px;
+        left: 50%;
+        margin-left: -150px;
+        top: 250px;
+      }
+      #name_text{
+        box-sizing: border-box;
+        width: 300px;
+        height: 20px;
+        margin-bottom: 100px;
+        padding: 20px 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .timerContainer {
+        position: absolute;
+        left: 50%;
+        width: 600px;
+        margin-left: -300px;
+        top: 340px;
+      }
+      progress {
+        width: 100%;
+        height: 20px;
+        color: #ad42ff;
+        border-radius: 5px;
+        -webkit-appearance: progress-bar;
+      }
+      progress::-webkit-progress-bar {
+        width: 100%;
+        height: 20px;
+        border-radius: 5px;
+        background-color: #5e5e5e;
+      }
+      progress::-webkit-progress-value {
+        width: 100%;
+        height: 20px;
+        background-color: #ad42ff;
+        border-radius: 5px;
+      }
+      #data_collection {
+        position: absolute;
+        left: 50%;
+        width: 400px;
+        margin-left: -200px;
+        top: 0px;
+      }
+      #name_text {
+        width: 250px;
+      }
+      #submit_button {
+        font-size: 12pt;
+        padding: 12px 24px;
+        position: relative;
+        background-color: #ad42ff;
+        border: solid 1px #ad42ff;
+        color: #f7f7f7;
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0px 0px;
+        cursor: pointer;
+      }
+      #submit_button:hover {
+        background: #9000ff;
+        border: solid 1px #9000ff;
+        border-radius: 15px;
+        color: #ebebeb;
+        outline: none;
+      }
+      #submit_button:focus {
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timerContainer">
+      <progress class="time" id="time" value="0" max="6"></progress>
+    </div>
+    <input class="homeButton homeButton_hover" type="button" value="HOME" id="home" onclick="window.location.href = 'index.html';">
+    <input class="leaderboardButton leaderboardButton_hover" type="button" value="LEADERBOARD" id="leaderboard" onclick="window.location.href = 'https://leaders-rankings.herokuapp.com';">
+    <div class="container" id="container">
+    <div class="container2" id="container2">
+      <h5 id="instruct"></h5>
+      <div id="wordsContainer">
+        <h2><div class="word" id="word1">word1</div> and <div class="word" id="word2">word2</div> are: </h2>
+      </div>
+      <div id="answersContainer">
+        <input class="answerButton answerButton_hover" type="button" value="Synonyms" id="synonyms" onclick="return answer(this.id);">
+        <input class="answerButton answerButton_hover" type="button" value="Antonyms" id="antonyms" onclick="return answer(this.id);">
+        <input class="answerButton answerButton_hover" type="button" value="Neither" id="neither" onclick="return answer(this.id);">
+      </div>
+      <input class="nextButton" id="nextButton" type="button" value="Continue" onclick="return next();">
+      <div id="scoreContainer">
+        <h3 id="scoreLine">Score: <ins id="currentScore">0</ins></h3>
+      </div>
+      <div id="livesContainer">
+        <h3 id="livesLine">Lives: <ins id="lives">3</ins></h3>
+      </div>
+    </div>
+    </div>
+    <h2 id="feedback" style="height: 50px; font-size: 80px;"></h2>
+    <div class="definition" id="definition"></div>
+
+    <script language="javascript" type="text/javascript">
+    var words = ["POLITE","BEAUTIFUL", "GORGEOUS", "HAPPY", "SAD", "UGLY",
+                "UNHAPPY", "UNATTRACTIVE", "ATTRACTIVE", "HANDSOME", "CUTE",
+                "SMART", "STUPID", "BIG", "TINY", "HUGE", "LUCKY", "UNLUCKY",
+                "FUN", "FUNNY", "SCARY", "DUMB", "DIFFICULT", "EASY", "PLEASANT",
+                "EXCITED", "PATHETIC", "HONORABLE", "INCORRECT", "MANY",
+                "WORSE", "SUPERIOR", "ELEGANT", "SIMPLE", "LOUD", "QUIET", "PROPER",
+                "SECURE", "HORRIBLE", "DISGUSTING", "SMOOTH", "HEALTHY", "RESPONSIBLE",
+              "ACTIVE", "PASSIVE", "TERRIBLE", "STIFF", "FAT", "SKINNY", "BORING"];
+    var word1 = document.getElementById("word1");
+    var word2 = document.getElementById("word2");
+    var answerId;
+    var currScore = 0;
+    var finalScore;
+    var currLives;
+    var synDisplay = document.getElementById("synonyms");
+    var antDisplay = document.getElementById("antonyms");
+    var neiDisplay = document.getElementById("neither");
+    var nextDisplay = document.getElementById("nextButton");
+    var defDisplay = document.getElementById("definition");
+    var progressBar = document.getElementById("time");
+    var defText1;
+    var defText2;
+    var w1choose = "";
+    var w2choose = "";
+    var correctAnswer = "NEITHER";
+    var intervalTimer;
+
+    function setWords() {
+        document.getElementById("feedback").innerHTML = "";
+        $.ajax({
+          type: "GET",
+          url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+words[Math.floor(Math.random() * words.length)]+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+          dataType: 'json',
+          success: function(data) {
+            w1choose = data[0].meta.syns[0][Math.floor(Math.random() * data[0].meta.syns[0].length)].toUpperCase();
+          },
+          async: false
+        });
+        var pick = Math.floor(Math.random() * 11) + 1;
+        choosew2(w1choose, pick);
+        if ((w2choose == "undefined") || (w2choose == "")) {
+          w2choose = pickRandom(w1choose);
+        }
+        word1.innerHTML = w1choose;
+        word2.innerHTML = w2choose;
+        console.log("correctAnswer: " + correctAnswer);
+        intervalTimer = function(){};
+        timing();
+      }
+
+      function choosew2(w1choose, pick) {
+        if (pick < 5) {                                                      // 4/11 chance of synonym
+          if (synsExist(w1choose)) {
+            w2choose = pickSynonym(w1choose);
+            correctAnswer = "SYNONYMS";
+          } else {
+            pick = 3;
+          }
+        }
+        if (pick >= 5 && pick < 9) {                                         // 4/11 chance of antonym
+          if (antsExist(w1choose)) {
+            w2choose = pickAntonym(w1choose);
+            correctAnswer = "ANTONYMS";
+          } else {
+            pick = 3;
+          }
+        }
+        if (pick >= 9) {                                                     // 3/11 chance of neither (less meaningful and slightly slower to run)
+          correctAnswer = "NEITHER";
+          w2choose = pickRandom();
+          if (areSynonyms(w1choose, w2choose)) {
+            correctAnswer = "SYNONYMS";
+          }
+          if (areAntonyms(w1choose, w2choose)) {
+            correctAnswer = "ANTONYMS";
+          }
+        }
+      }
+
+      function synsExist(w) {
+        var b = false;
+        $.ajax({
+          type: "GET",
+          url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w+"?key="+"22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+          dataType: 'json',
+          success: function(data) {
+            if (data[0].meta.hasOwnProperty("syns")) {
+              if (data[0].meta.syns.status === undefined) {
+                if (data[0].meta.syns.length != 0) {
+                  if (data[0].meta.syns[0].length != 0) {
+                    b = true;
+                  }
+                }
+              }
+            }
+          },
+          async: false
+        });
+        return b;
+      }
+
+      function antsExist(w) {
+        var b = false;
+        $.ajax({
+          type: "GET",
+          url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w+"?key="+"22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+          dataType: 'json',
+          success: function(data) {
+            if (data[0].meta.hasOwnProperty("ants")) {
+              if (data[0].meta.ants.status === undefined) {
+                if (data[0].meta.ants.length != 0) {
+                  if (data[0].meta.ants[0].length != 0) {
+                    b = true;
+                  }
+                }
+              }
+            }
+          },
+          async: false
+        });
+        return b;
+      }
+
+      function pickSynonym(w) {
+        var s;
+        $.ajax({
+          type: "GET",
+          url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+          dataType: 'json',
+          success: function(data) {
+            s = JSON.stringify(data[0].meta.syns[0][Math.floor(Math.random() * data[0].meta.syns[0].length)]);
+          },
+          async: false
+        });
+        return s.toUpperCase().replace(/\"/g, "");
+      }
+
+      function pickAntonym(w) {
+        var a;
+        $.ajax({
+          type: "GET",
+          url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+          dataType: 'json',
+          success: function(data) {
+            if (data[0].meta.ants.length != 0) {
+              if (data[0].meta.ants[0].length != 0) {
+                a = JSON.stringify(data[0].meta.ants[0][Math.floor(Math.random() * data[0].meta.ants[0].length)]).toUpperCase().replace(/\"/g, "");
+              } else {
+                a = JSON.stringify(data[0].meta.ants[Math.floor(Math.random() * data[0].meta.ants.length)]);
+              }
+            }
+          },
+          async: false
+        });
+        return a.toUpperCase().replace(/\"/g, "");
+      }
+
+      function pickRandom() {
+        var n;
+        $.ajax({
+          type: "GET",
+          url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+words[Math.floor(Math.random() * words.length)]+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+          dataType: 'json',
+          success: function(data) {
+            if (data[0].meta.syns.status === undefined) {
+              n = data[0].meta.syns[0][Math.floor(Math.random() * data[0].meta.syns[0].length)];
+            }
+          },
+          async: false
+        });
+        return n.toUpperCase().replace(/\"/g, "");
+      }
+
+    setWords();
+
+    var showDef1 = function() {
+      document.getElementById("instruct").style.visibility = "hidden";
+      $.ajax({
+        type: "GET",
+        url: "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + word1.textContent + "?key=058036c9-eb04-4c41-b4b8-72de22609d84",
+        dataType: 'json',
+        async: false
+      }).done(function(data) {
+        defText = JSON.stringify(data[0].shortdef[0]).replace(/\"/g, "");
+        defDisplay.innerHTML = "<h4 class='definitionText'>" + defText + "</h4>";
+        defDisplay.style.visibility = "visible";
+      })
+    }
+
+    var showDef2 = function() {
+      document.getElementById("instruct").style.visibility = "hidden";
+      $.ajax({
+        type: "GET",
+        url: "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + word2.textContent + "?key=058036c9-eb04-4c41-b4b8-72de22609d84",
+        dataType: 'json',
+        async: false
+      }).done(function(data) {
+        defText = JSON.stringify(data[0].shortdef[0]).replace(/\"/g, "");
+        defDisplay.innerHTML = "<h4 class='definitionText'>" + defText + "</h4>";
+        defDisplay.style.visibility = "visible";
+      })
+    }
+
+    function answer(ansId) {
+      $("#"+correctAnswer.toLowerCase()).addClass("correctButton");
+      synDisplay.disabled = true;
+      antDisplay.disabled = true;
+      neiDisplay.disabled = true;
+      $("#synonyms").removeClass("answerButton_hover");
+      $("#antonyms").removeClass("answerButton_hover");
+      $("#neither").removeClass("answerButton_hover");
+      document.getElementById("instruct").innerHTML = "Hover over the words for their definitions!";
+      $(".word").addClass("word_hover");
+      word1.addEventListener("mouseover", showDef1);
+      word2.addEventListener("mouseover", showDef2);
+      $(".word").mouseout(function(){
+        defDisplay.style.visibility = "hidden";
+        document.getElementById("instruct").style.visibility = "visible";
+      })
+
+      display = document.getElementById("feedback");
+      if (ansId == "timesUp") {
+        currLives = parseInt(document.getElementById("lives").textContent);
+        currLives--;
+        if (currLives > 0) {
+          display.innerHTML = "⏳❌";                                                 // More than 0 lives, keep playing
+          document.getElementById("lives").innerHTML = currLives;
+          nextDisplay.style.visibility = "visible";
+        } else {
+        display.innerHTML = "❌GAME OVER❌";
+        document.getElementById("lives").innerHTML = 0;                    // 0 lives, game over
+        nextDisplay.setAttribute("onclick", "return game_end()")
+        nextDisplay.style.visibility = "visible";
+        finalScore = parseInt(document.getElementById("currentScore").textContent);
+        }
+      } else {
+        answerId = ansId;
+        if (answerId == correctAnswer.toLowerCase()) {
+          $("#" + ansId).addClass("correctButton");
+          display.innerHTML = "🧠✅";
+          currScore = parseInt(document.getElementById("currentScore").textContent);
+          currScore++;
+          var newScore = (currScore).toString();
+          document.getElementById("currentScore").innerHTML = newScore;
+          nextDisplay.style.visibility = "visible";
+        } else {
+          $("#" + answerId).addClass("wrongButton");
+          currLives = parseInt(document.getElementById("lives").textContent);
+          currLives--;
+          if (currLives > 0) {
+            display.innerHTML = "👎❌";                                               // More than 0 lives, keep playing
+            document.getElementById("lives").innerHTML = currLives;
+            nextDisplay.style.visibility = "visible";
+          } else {
+            display.innerHTML = "❌GAME OVER❌";
+            document.getElementById("lives").innerHTML = 0;                    // 0 lives, game over
+            nextDisplay.setAttribute("onclick", "return game_end()")
+            nextDisplay.style.visibility = "visible";
+            finalScore = parseInt(document.getElementById("currentScore").textContent);
+          }
+        }
+      }
+    }
+
+    function next() {
+      word1.removeEventListener("mouseover", showDef1);
+      word2.removeEventListener("mouseover", showDef2);
+      document.getElementById("instruct").innerHTML = "";
+      $(".word").removeClass("word_hover")
+      $("#" + answerId).removeClass("wrongButton");                                 // Hide feedback
+      $("#" + answerId).removeClass("correctButton");                               // Hide feedback
+      $("#synonyms").addClass("answerButton_hover");                         // Allow hover on answerButtons
+      $("#antonyms").addClass("answerButton_hover");                         // Allow hover on answerButtons
+      $("#neither").addClass("answerButton_hover");                          // Allow hover on answerButtons
+      synDisplay.disabled = false;                                           // answerButtons clickable again
+      antDisplay.disabled = false;                                           // answerButtons clickable again
+      neiDisplay.disabled = false;                                           // answerButtons clickable again
+      nextDisplay.style.visibility = "hidden";
+      $("#" + correctAnswer.toLowerCase()).removeClass("correctButton");
+      setWords();
+    }
+
+    function areAntonyms(w1, w2) {
+      var isAntonym = false;
+      w1 = w1.toLowerCase();
+      w2 = w2.toLowerCase();
+      $.ajax({
+        type: "GET",
+        url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w1+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+        dataType: 'json',
+        success: function(data) {
+          if (data[0].meta.ants.length != 0) {
+            if (data[0].meta.ants[0].length != 0) {
+              if (data[0].meta.ants[0].includes(w2)) {
+                isAntonym = true;
+              }
+            } else {
+              if (data[0].meta.ants.includes(w2)) {
+                isAntonym = true;
+              }
+            }
+          }
+        },
+        async: false
+      });
+      $.ajax({
+        type: "GET",
+        url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w2+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+        dataType: 'json',
+        success: function(data) {
+          if (data[0].meta.ants.length != 0) {
+            if (data[0].meta.ants[0].length != 0) {
+              if (data[0].meta.ants[0].includes(w1)) {
+                isAntonym = true;
+              }
+            } else {
+              if (data[0].meta.ants.includes(w1)) {
+                isAntonym = true;
+              }
+            }
+          }
+        },
+        async: false
+      });
+      return isAntonym;
+    }
+
+    function areSynonyms(w1, w2) {
+      var isSynonym = false;
+      w1 = w1.toLowerCase();
+      w2 = w2.toLowerCase();
+      $.ajax({
+        type: "GET",
+        url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w1+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+        dataType: 'json',
+        success: function(data) {
+          if ((data[0].meta.syns.status === undefined)) {
+            if (data[0].meta.syns[0].includes(w2)) {
+              isSynonym = true;
+            }
+          }
+        },
+        async: false
+      });
+      $.ajax({
+        type: "GET",
+        url: "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/"+w2+"?key=22b1d144-e9b9-42dc-aa2f-cea2b942e8d6",
+        dataType: 'json',
+        success: function(data) {
+          if ((data[0].meta.syns.status === undefined)) {
+            if (data[0].meta.syns[0].includes(w1)) {
+              isSynonym = true;
+            }
+          }
+        },
+        async: false
+      });
+      return isSynonym;
+    }
+
+    var intervalTimer;
+
+    function timing() {
+      var timeLeft = 0;
+      if (currScore < 5) {
+        progressBar.setAttribute("max", "6");
+        intervalTimer = setInterval(function() {
+          document.getElementById("time").value = timeLeft;
+          timeLeft += 0.01;
+          if(timeLeft >= 6) {
+            clearInterval(intervalTimer);
+            answer("timesUp");
+          }
+        }, 10);
+        $(".answerButton").click(
+          function() {
+            clearInterval(intervalTimer);
+          }
+        )
+      }
+      if (currScore >= 5 && currScore < 10) {
+        progressBar.setAttribute("max", "5");
+        intervalTimer = setInterval(function() {
+          document.getElementById("time").value = timeLeft;
+          timeLeft += 0.01;
+          if(timeLeft >= 5) {
+            clearInterval(intervalTimer);
+            answer("timesUp");
+          }
+        }, 10);
+        $(".answerButton").click(
+          function() {
+            clearInterval(intervalTimer);
+          }
+        )
+      }
+      if (currScore >= 10 && currScore < 20) {
+        console.log("Max: " + progressBar.max)
+        progressBar.setAttribute("max", "4");
+        intervalTimer = setInterval(function() {
+          document.getElementById("time").value = timeLeft;
+          timeLeft += 0.01;
+          if(timeLeft >= 4) {
+            clearInterval(intervalTimer);
+            answer("timesUp");
+          }
+        }, 10);
+        $(".answerButton").click(
+          function() {
+            clearInterval(intervalTimer);
+          }
+        )
+      }
+      if (currScore >= 20 && currScore < 40) {
+        console.log("Max: " + progressBar.max)
+        progressBar.setAttribute("max", "3");
+        intervalTimer = setInterval(function() {
+          document.getElementById("time").value = timeLeft;
+          timeLeft += 0.01;
+          if(timeLeft >= 3) {
+            clearInterval(intervalTimer);
+            answer("timesUp");
+          }
+        }, 10);
+        $(".answerButton").click(
+          function() {
+            clearInterval(intervalTimer);
+          }
+        )
+      }
+      if (currScore >= 40) {
+        console.log("Max: " + progressBar.max)
+        progressBar.setAttribute("max", "2");
+        intervalTimer = setInterval(function() {
+          document.getElementById("time").value = timeLeft;
+          timeLeft += 0.01;
+          if(timeLeft >= 2) {
+            clearInterval(intervalTimer);
+            answer("timesUp");
+          }
+        }, 10);
+        $(".answerButton").click(
+          function() {
+            clearInterval(intervalTimer);
+          }
+        )
+      }
+    }
+
+      // GAMEPLAY ABOVE
+
+
+
+
+
+
+
+
+      // LEADERBOARD BELOW
+
+      function game_end(){
+          document.getElementById("wordsContainer").style.visibility = "hidden";
+          document.getElementById("answersContainer").style.visibility = "hidden";
+          document.getElementById("feedback").style.visibility = "hidden";
+          document.getElementById("instruct").style.visibility = "hidden";
+          document.getElementById("scoreContainer").style.visibility = "hidden";
+          document.getElementById("livesContainer").style.visibility = "hidden";
+          document.getElementById("nextButton").style.visibility = "hidden";
+          progressBar.style.visibility = "hidden";
+          add_div();
+
+      }
+
+      function add_div(){
+          $(document).ready(function(){
+              $("#wordsContainer + #answersContainer").before($('<form method = "post" action = "/post-feedback" id = "data_collection"></form>'));
+              var text1 = '<label>' + "Your Score:" + "<h2>" + finalScore + "<br><br></h2>" + '<input type= "text" style = "display: none" class = "score_box" id = "user" name = "score" value="' + finalScore + '" required>' +'</label>' + '<br>';
+              $("#data_collection").append(text1);
+              var text2 = '<label>' + "Enter your name:"+ '<br><br>' + '<input type = "text" id = "name_text" name = "player_name" required>'+'</label>' +'<br>';
+              $("#data_collection").append(text2);
+              var text3 = '<input type = "submit" id = "submit_button" value = "Submit" href="http://leaders-rankings.herokuapp.com">';
+              $("#data_collection").append(text3);
+              $("#name_text").click(function(){
+                  $("#name_text").val(" ");
+              })
+              $("#submit_button").click(function () {
+                  insert_mongo();
+                  modify_continue();
+                  location.href = "http://leaders-rankings.herokuapp.com";
+              })
+          });
+      };
+      function insert_mongo(){
+          var user_id = $("#name_text").val();
+          var object = {name: user_id, score: finalScore};
+      }
+      function modify_continue(){
+          $("#data_collection").remove();
+      }
+    </script>
+  </body>
+</html>
