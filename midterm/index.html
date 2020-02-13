@@ -1,1 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Jomolhari|Quicksand|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="external.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMP 20 - MIDTERM PROJECT - HOME</title>
+    <style>
+        [class*="city_column"] {
+              width: 100%;
+        }
 
+        @media only screen and (min-width:560px){
+            .city_column{
+                width: 33.33%;
+            }
+        }
+        @media only screen and (max-width: 805px){
+            .trend{
+                padding-top: 100px;
+            }
+        }
+    </style>
+
+  </head>
+  <body>
+
+    <header>
+      <h1>APOLLO TRAVEL</h1>
+      <nav>
+        <ul>
+          <li>
+            <a class="currentTab">HOME</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="destinations.html">DESTINATIONS</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="planatrip.html">PLAN A TRIP</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="contact.html">CONTACT</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="about.html">ABOUT</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <br style = "line-height: 10px">
+
+    <h2 class = "trend" style ="font-size: 40px; margin-top: 175px; text-align: center; font-family: 'Source Sans Pro', sans-serif;">Trending destinations</h2>
+    <div class = "row">
+        <div class = "city_column">
+            <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/c81f09d36451a030f40f459726f31a96-barcelona.jpeg?sharp=10&vib=20&w=1200" alt="Barcelona" style="width:100%; height: 200px;">
+            <div class ="city_name" style="font-family: 'Quicksand', sans-serif; font-size: 20px;">Barcelona</div>
+        </div>
+        <div class = "city_column">
+            <img src ="https://media.gettyimages.com/photos/shibuya-shopping-district-tokyo-japan-picture-id505797368" alt ="Tokyo" style="width: 100%; height: 200px;">
+            <div class ="city_name" style="font-family: 'Quicksand', sans-serif; font-size: 20px;">Tokyo</div>
+        </div>
+        <div class = "city_column">
+            <img src="https://www.travelbeginsat40.com/wp-content/uploads/2019/07/The-View-of-Istanbul-5.jpg" alt="Istanbul" style ="width:100%; height: 200px;">
+            <div class ="city_name" style="font-family: 'Quicksand', sans-serif; font-size: 20px;">Istanbul</div>
+        </div>
+    </div>
+
+    <h2 style="font-size: 40px; margin-top: 50px; text-align: center; font-family: 'Source Sans Pro', sans-serif;">Staff Picks</h2>
+    <div class = "row">
+        <div class = "city_column">
+            <img src="https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Portugal/Lisbon/lisbon-lead-image.jpg?imwidth=450" alt="Lisbon" style="width:100%; height: 200px;">
+            <div class ="city_name" style="font-family: 'Quicksand', sans-serif; font-size: 20px;">Lisbon</div>
+        </div>
+        <div class = "city_column">
+            <img src="https://img.jakpost.net/c/2018/02/01/2018_02_01_39875_1517462499._large.jpg" alt="Bali" style="width:100%; height: 200px;">
+            <div class ="city_name" style="font-family: 'Quicksand', sans-serif; font-size: 20px;">Bali</div>
+        </div>
+        <div class = "city_column">
+            <img src="https://sprudge.com/wp-content/uploads/2019/04/Edinburgh.jpg" alt="Edinburgh" style="width:100%; height: 200px;">
+            <div class ="city_name" style="font-family: 'Quicksand', sans-serif; font-size: 20px;">Edinburgh</div>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
+
+    <footer>
+      © Copyright 2050 by nobody. All rights reversed. Website created by Angela Maliakal, Brian Savage, Daniel Lee and Eric Duanmu.
+    </footer>
+
+  </body>
+</html>

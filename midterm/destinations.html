@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Jomolhari|Quicksand|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="external.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>COMP 20 - MIDTERM PROJECT - ABOUT US</title>
+
+     <script type="text/javascript">
+        $(document).ready(function () {
+           $("#ParisPhoto").hover(function () {
+              $("#ParisPhoto").stop().animate({opacity: 0}, 200, function() {
+                $("#ParisPhoto").css("z-index",100)
+              });
+           }, function () {
+              $("#ParisPhoto").stop().animate({opacity: 1}, 500, function() {
+                $("#ParisPhoto").css("z-index",-100)
+              });
+           });
+           $("#SingaporePhoto").hover(function () {
+              $("#SingaporePhoto").stop().animate({opacity: 0}, 200, function() {
+                $("#SingaporePhoto").css("z-index",100)
+              });
+           }, function () {
+              $("#SingaporePhoto").stop().animate({opacity: 1}, 500, function() {
+                $("#SingaporePhoto").css("z-index",-100)
+              });
+           });
+
+           $("#ParisPhoto").hover(function () {
+              $("#EuropeanInfo").css("opacity", 1);
+           }, function () {
+              $("#EuropeanInfo").css("opacity", 0);
+           });
+           $("#SingaporePhoto").hover(function () {
+              $("#AsianInfo").css("opacity", 1);
+           }, function () {
+              $("#AsianInfo").css("opacity", 0);
+           });
+        });
+     </script>
+  </head>
+  <body>
+
+    <header>
+      <h1>APOLLO TRAVEL</h1>
+      <nav>
+        <ul>
+          <li>
+            <a class="notCurrentTab" href="index.html">HOME</a>
+          </li>
+          <li>
+            <a class="currentTab">DESTINATIONS</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="planatrip.html">PLAN A TRIP</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="contact.html">CONTACT</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="about.html">ABOUT</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <div class="rowDestinations" style="height: 40%; margin-left: -3%">
+        <center>
+            <a href="europe.html"><img class="responsiveDestinations" id="ParisPhoto" src="paris.jpg">   </img></a>
+            <a href="asia.html"><img class="responsiveDestinations" id="SingaporePhoto" src="singapore.jpg" style="height: 140%">   </img></a>
+        </center>
+    </div>
+    <div class="rowDestinations" style="margin-top: -100%; width: 100%; z-index: 50;">
+        <center>
+            <h2 class="responsiveDestinations" id="EuropeanInfo" style="float:left; opacity: 0; border: dashed 1px #636363; font-family: 'Source Sans Pro', sans-serif;">Go to European Destinations</h1>
+            <h2 class="responsiveDestinations" id="AsianInfo" style="float:right; opacity: 0; border: dashed 1px #636363; font-family: 'Source Sans Pro', sans-serif; margin-right: 43px;">Go to Asian Destinations</h1>
+        </center>
+    </div>
+
+
+        <footer>
+          © Copyright 2050 by nobody. All rights reversed. Website created by Angela Maliakal, Brian Savage, Daniel Lee and Eric Duanmu.
+        </footer>
+ </body>
+</html>

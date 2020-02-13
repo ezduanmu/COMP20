@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Jomolhari|Quicksand|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="external.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>COMP 20 - MIDTERM PROJECT - ABOUT US</title>
+
+    <style>
+      .aboutContainer {
+        z-index: 0;
+        position: relative;
+        top: 200px;
+      }
+      .memberContainer {
+        vertical-align: middle;
+        position: relative;
+        display: inline-block;
+        top: 80px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+      }
+      .aboutParagraphContainer {
+        width: 60%;
+      }
+      .column{
+          position: relative; float: left; width: 25%;
+      }
+      .box {
+          background-color: transparent; width: 250px; height: 250px; perspective: 1000px;
+      }
+      .hover_box{
+          transform: rotateY(180deg);
+      }
+      .box_storage {
+          position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;
+      }
+      .flip-box-front, .flip-box-back {
+          position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+      }
+      .flip-box-front {
+          background-color: #FFF; color: black;
+      }
+      .flip-box-back {
+          background-color: #FFF; color: #000; transform: rotateY(180deg);
+          border: dashed 1px #636363;
+          text-align: center;
+          font-family: 'Quicksand', sans-serif; font-size: 16px;
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+      [class*="aboutParagraphContainer"] {
+              width: 80%;
+      }
+      @media only screen and (max-width:560px){
+            .aboutParagraphContainer {
+                width: 60%;
+            }
+            h2{
+                padding-top: 100px;
+            }
+            .teamContainer{
+                margin-left: 100px;
+            }
+      }
+      @media only screen and (min-width: 560px){
+            .memberContainer{
+                width: 20%;
+            }
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <header>
+      <h1>APOLLO TRAVEL</h1>
+      <nav>
+        <ul>
+          <li>
+            <a class="notCurrentTab" href="index.html">HOME</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="destinations.html">DESTINATIONS</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="planatrip.html">PLAN A TRIP</a>
+          </li>
+          <li>
+            <a class="notCurrentTab" href="contact.html">CONTACT</a>
+          </li>
+          <li>
+            <a class="currentTab">ABOUT</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <center>
+
+    <div class="aboutContainer">
+    <div class="aboutParagraphContainer" style="border: solid 3px #000; border-radius: 20px; padding-left: 15px; padding-right: 15px; padding-bottom: 20px;">
+      <h2 style="font-size: 40px; font-family: 'Source Sans Pro', sans-serif;">ABOUT US</h2>
+      <p style="font-family: 'Quicksand', sans-serif; font-size: 20px;">We are a company that helps people travel. When customers book their plans with us, we do our best to ensure that the
+          only thing they need to worry about is having fun in every moment of their experience. We have networks that span across the globe, which allow us to create immersive cultural experiences for our customers. We are not just a travel agency to our customers. We are the best travel companion.</p>
+    </div>
+
+    <div class="teamContainer">
+      <div class="memberContainer" id="brianContainer">
+          <div class = "column" id = "demo">
+                    <div class = "box" id = "brian">
+                    </div>
+                    <div style="width: 250px; border: solid 3px #000; border-radius: 20px; border-top-left-radius: 0px; border-top-right-radius: 0px; border-top: dashed 1px #636363">
+                            <h3 style="font-family: 'Source Sans Pro', sans-serif; font-size: 30px; margin-bottom: -10px; margin-top: 10px;">Brian Savage</h3>
+                            <p style="font-family: 'Quicksand', sans-serif; font-size: 16px;">Chief Executive Officer</p>
+                    </div>
+                </div>
+      </div>
+
+      <div class="memberContainer" id="angelaContainer">
+          <div class = "column" id = "demo">
+                    <div class = "box" id = "angela">
+                    </div>
+                    <div style="width: 250px; border: solid 3px #000; border-radius: 20px; border-top-left-radius: 0px; border-top-right-radius: 0px; border-top: dashed 1px #636363">
+                            <h3 style="font-family: 'Source Sans Pro', sans-serif; font-size: 30px; margin-bottom: -10px; margin-top: 10px;">Angela Maliakal</h3>
+                            <p style="font-family: 'Quicksand', sans-serif; font-size: 16px;">Head of Europe</p>
+                    </div>
+                </div>
+      </div>
+
+      <div class="memberContainer" id="ericContainer">
+          <div class = "column" id = "demo">
+                    <div class = "box" id = "eric">
+                    </div>
+                    <div style="width: 250px; border: solid 3px #000; border-radius: 20px; border-top-left-radius: 0px; border-top-right-radius: 0px; border-top: dashed 1px #636363">
+                            <h3 style="font-family: 'Source Sans Pro', sans-serif; font-size: 30px; margin-bottom: -10px; margin-top: 10px;">Eric Duanmu</h3>
+                            <p style="font-family: 'Quicksand', sans-serif; font-size: 16px;">Head of Asia</p>
+                    </div>
+                </div>
+      </div>
+
+      <div class="memberContainer" id="danielContainer">
+          <div class = "column" id = "demo">
+                    <div class = "box" id = "daniel">
+                    </div>
+                    <div style="width: 250px; border: solid 3px #000; border-radius: 20px; border-top-left-radius: 0px; border-top-right-radius: 0px; border-top: dashed 1px #636363">
+                            <h3 style="font-family: 'Source Sans Pro', sans-serif; font-size: 30px; margin-bottom: -10px; margin-top: 10px;">Danny Lee</h3>
+                            <p style="font-family: 'Quicksand', sans-serif; font-size: 16px;">Chief Business Officer</p>
+                    </div>
+                </div>
+      </div>
+
+    </div>
+
+    <script>
+            $(document).ready(function(){
+                $("#brian").append('<div class = "box_storage" id = "inner_brian"></div>');
+                $("#inner_brian").append('<div class = "flip-box-front" id = "pic_storage_brian"></div>');
+                $("#pic_storage_brian").append('<img src = "" id = "pic_brian" style = "width: 250px; height: 250px;">');
+                var image = "608A0375.jpeg";
+                $("#pic_brian").attr("src", image);
+                var information = '<p>'+"<br> <br> <br> <br> Where I am: New York <br> <br> Favorite Cities: London, Amsterdam, Barcelona"+'</p>';
+                $("#inner_brian").append('<div class = "flip-box-back" id = "info_brian"></div>');
+                $("#info_brian").append(information);
+                $("#angela").append('<div class = "box_storage" id = "inner_angela"></div>');
+                $("#inner_angela").append('<div class = "flip-box-front" id = "pic_storage_angela"></div>');
+                $("#pic_storage_angela").append('<img src = "" id = "pic_angela" style = "width: 250px; height: 250px;">');
+                var image_2 = "A5D648EC-AE3D-45B0-8CC9-E42C82F22667.JPG";
+                $("#pic_angela").attr("src", image_2);
+                var information_2 = '<p>'+"<br> <br> <br> <br> Where I am: Nashville <br> <br> Favorite Cities: New York, London, Summit, NJ"+'</p>';
+                $("#inner_angela").append('<div class = "flip-box-back" id = "info_angela"></div>');
+                $("#info_angela").append(information_2);
+                $("#eric").append('<div class = "box_storage" id = "inner_eric"></div>');
+                $("#inner_eric").append('<div class = "flip-box-front" id = "pic_storage_eric"></div>');
+                $("#pic_storage_eric").append('<img src = "" id = "pic_eric" style = "width: 250px; height: 250px;">');
+                var image_3 = "IMG_1288.JPG";
+                $("#pic_eric").attr("src", image_3);
+                var information_3 = '<p>'+"<br> <br> <br> <br> Where I am: Hong Kong <br> <br> Favorite Cities: Singapore, Medford, Vancouver"+'</p>';
+                $("#inner_eric").append('<div class = "flip-box-back" id = "info_eric"></div>');
+                $("#info_eric").append(information_3);
+                $("#daniel").append('<div class = "box_storage" id = "inner_daniel"></div>');
+                $("#inner_daniel").append('<div class = "flip-box-front" id = "pic_storage_daniel"></div>');
+                $("#pic_storage_daniel").append('<img src = "" id = "pic_daniel" style = "width: 250px; height: 250px;">');
+                var image_4 = "LRG_DSC04658.JPG";
+                $("#pic_daniel").attr("src", image_4);
+                var information_4 = '<p>'+"<br> <br> <br> <br> Where I am: Lisbon <br> <br> Favorite Cities: Los Angeles, Madrid, Toronto"+'</p>';
+                $("#inner_daniel").append('<div class = "flip-box-back" id = "info_daniel"></div>');
+                $("#info_daniel").append(information_4);
+            });
+            $(document).ready(function(){
+                $(".box_storage").hover(function(){
+                    $(this).toggleClass("hover_box");
+                });
+            });
+    </script>
+
+    <br>  <br>  <br>  <br>  <br>  <br> <br> <br> <br> <br> <br>
+
+    </center>
+
+    <footer>
+      © Copyright 2050 by nobody. All rights reversed. Website created by Angela Maliakal, Brian Savage, Daniel Lee and Eric Duanmu.
+    </footer>
+
+  </body>
+</html>
