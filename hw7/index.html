@@ -1,1 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>COMP 20 - HW 7</title>
+  <style type="text/css">
+    body, html {
+      font-family: "helvetica", "sans-serif";
+      background-color: #ff7aa9;
+    }
+    .row {
+      font-family: "helvetica", "sans-serif";
+      border: solid 5px #fcba03;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+      margin-left: 450px;
+      margin-right: 450px;
+      background-color: #a1ecf0;
+    }
+    form {
+      font-family: "helvetica", "sans-serif";
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .row3 {
+      font-family: "helvetica", "sans-serif";
+      border: solid 5px #fcba03;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+      margin-left: 450px;
+      margin-right: 450px;
+      background-color: #b2de95;
+    }
+  </style>
 
+</head>
+
+<body>
+  <h1>Serialized Display:</h1>
+  <div class="serialized" id="serialized"></div>
+  <h1>User Friendly Display:</h1>
+  <center>
+    <br>
+
+    <div class="row" id="0"> </div>
+    <div class="row" id="1"> </div>
+    <div class="row" id="2"> </div>
+    <div class="row" id="3"> </div>
+    <div class="row" id="4"> </div>
+    <div class="row" id="5"> </div>
+    <div class="row" id="6"> </div>
+    <div class="row" id="7"> </div>
+    <div class="row" id="8"> </div>
+    <div class="row" id="9"> </div>
+    <form>
+      <select id="genreSelect" size="4">
+        <option value="Indie">Indie</option>
+        <option value="Hip Hop">Hip Hop</option>
+        <option value="R&B">R&B</option>
+        <option value="Pop">Pop</option>
+      </select>
+      <input type="button" value="Show the selected genre" onclick="return selectedGenre(songs);">
+    </form>
+    <div class="row2" id="genreDisplay"></div>
+  </center>
+  <h1><br><br><br><br><br><br><br><br></h1>
+  <script>
+      var songs = [
+        {"title":"Devil In A New Dress", "year":2010, "artists":["Kanye West", "Rick Ross"], "genres":["Hip Hop"]},
+        {"title":"I Really Like You", "year":2015, "artists":["Carly Rae Jepsen"], "genres":["Pop"]},
+        {"title":"Phone Numbers", "year":2019, "artists":["Dominic Fike", "Kenny Beats"], "genres":["Hip Hop", "Indie"]},
+        {"title":"Heartless", "year":2008, "artists":["Kanye West"], "genres":["R&B"]},
+        {"title":"Chanel", "year":2017, "artists":["Frank Ocean"], "genres":["R&B"]},
+        {"title":"Roar", "year":2013, "artists":["Katy Perry"], "genres":["Pop"]},
+        {"title":"Church", "year":2016, "artists":["BJ The Chicago Kid", "Chance the Rapper", "Buddy"], "genres":["R&B", "Hip Hop"]},
+        {"title":"No Wave", "year":2018, "artists":["IDK", "Denzel Curry"], "genres":["Hip Hop"]},
+        {"title":"Tadow", "year":2018, "artists":["Masego", "FKJ"], "genres":["R&B"]},
+        {"title":"I Was Sad Last Night I'm OK Now", "year":2019, "artists":["tobi lou"], "genres":["Hip Hop"]},
+        {"title":"Bags", "year":2019, "artists":["Clairo"], "genres":["Indie"]},
+      ];
+      for (var i = 0; i < 10; i++) {
+        document.getElementById("serialized").innerHTML += JSON.stringify(songs[i]) + "<br>";
+      }
+      function printSongs(songs) {
+        for (var i = 0; i < 10; i++) {
+          var artists = getArtistString(songs, i);
+          var genres = getGenreString(songs, i);
+          document.getElementById(i.toString()).innerHTML = "" + (songs[i].title + "<br>Artist(s): " + artists
+            + "<br>Genre(s): " + genres + "<br>Released: " + songs[i].year + "<br>");
+        }
+      }
+      function getArtistString(songs, songIndex) {
+        var artistString = "";
+        for (var i = 0; i < songs[songIndex].artists.length; i++) {
+          if (i < (songs[songIndex].artists.length - 1)) {
+            artistString = artistString + songs[songIndex].artists[i] + ", ";
+          }
+          else {
+            artistString = artistString + songs[songIndex].artists[i];
+          }
+        }
+        return artistString;
+      }
+      function getGenreString(songs, songIndex) {
+        var genreString = "";
+        for (var i = 0; i < songs[songIndex].genres.length; i++) {
+          if (i < (songs[songIndex].genres.length - 1)) {
+            genreString = genreString + songs[songIndex].genres[i] + ", ";
+          }
+          else {
+            genreString = genreString + songs[songIndex].genres[i];
+          }
+        }
+        return genreString;
+      }
+
+      printSongs(songs);
+
+      function selectedGenre(songs) {
+        document.getElementById("genreDisplay").innerHTML = "";
+        for (var i = 0; i < 10; i++) {
+          var matches = 0;
+          for (var j = 0; j < songs[i].genres.length; j++) {
+            if (songs[i].genres[j] == document.getElementById("genreSelect").value) {
+              matches++;
+            }
+          }
+          if (matches > 0) {
+            document.getElementById("genreDisplay").innerHTML += "<div class='row3'>" + document.getElementById(i.toString()).innerHTML + "</div>";
+          }
+        }
+      }
+  </script>
+</body>
+</html>
