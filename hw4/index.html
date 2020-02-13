@@ -1,1 +1,215 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>COMP 20 - HW 4</title>
+    <style>
+      body, html {
+        font-family: "helvetica";
+      }
+      form {
+        border: solid 3px;
+        padding: 5px;
+      }
+    </style>
+    <script language="javascript">
+      function processInput()
+      {
+        var inputRaw = document.getElementById("numbersInput").value;
+        var inputArray = inputRaw.split(" ").map(Number);
+        for (i = 0; i < 5; i++)
+        {
+          inputArray[i] = parseInt(inputArray[i]);
+        }
 
+        var inputLucky = Number(document.getElementById("luckyInput").value);
+        var luckyMatch = false;
+        if (inputLucky == luckyNum)
+        {
+          luckyMatch = true;
+        }
+
+        var matches = 0;
+        for (i = 0; i < 5; i++)
+        {
+          for (j = 0; j < 5; j++)
+          {
+            if (inputArray[i] == numbers[j])
+            {
+              matches++;
+            }
+          }
+        }
+
+        var payout;
+        if (luckyMatch == true)
+        { //lucky ball match
+          switch (matches)
+          {
+            case 0:
+              payout = 4;
+              break;
+            case 1:
+              payout = 6;
+              break;
+            case 2:
+              payout = 25;
+              break;
+            case 3:
+              payout = 150;
+              break;
+            case 4:
+              payout = 5000;
+              break;
+            case 5:
+              payout = "7000 a WEEK for LIFE";
+              break;
+          }
+        } else
+        { //no lucky ball match
+          switch (matches)
+          {
+            case 0:
+              payout = 0;
+              break;
+            case 1:
+              payout = 0;
+              break;
+            case 2:
+              payout = 3;
+              break;
+            case 3:
+              payout = 20;
+              break;
+            case 4:
+              payout = 200;
+              break;
+            case 5:
+              payout = "25000 a YEAR for LIFE";
+              break;
+          }
+        }
+        document.getElementById("displayPayout").innerHTML = "Your payout: $" + payout;
+      }
+
+      function processOrder()
+      {
+        var order = [orderHotdogs, orderFries, orderDrinks];
+        order[0].amount = document.getElementById("hotdogsOrdered").value;
+        order[1].amount = document.getElementById("friesOrdered").value;
+        order[2].amount = document.getElementById("drinksOrdered").value;
+        document.getElementById("display4").innerHTML = "Your total:";
+        document.getElementById("display5").innerHTML = order[0].amount + " " + order[0].name;
+        document.getElementById("display6").innerHTML = order[1].amount + " " + order[1].name;
+        document.getElementById("display7").innerHTML = order[2].amount + " " + order[2].name;
+
+        var subtotal = parseFloat((menu[0].price * parseInt(order[0].amount)) + (menu[1].price * parseInt(order[1].amount)) + (menu[2].price * parseInt(order[2].amount)))
+        var discount = 0;
+        var tax = parseFloat((subtotal * 0.0625).toFixed(2));
+
+        document.getElementById("display8").innerHTML = "Subtotal: $" + subtotal.toFixed(2);
+        if (subtotal >= 20)
+        {
+          discount = parseFloat((subtotal / 10).toFixed(2));
+          document.getElementById("display9").innerHTML = "<br>Joe's special discount: -$" + discount.toFixed(2) + "<br>";
+        } else
+        {
+          document.getElementById("display9").innerHTML = "";
+        }
+        document.getElementById("display10").innerHTML = "Tax: $" + tax;
+        var orderTotal = ((subtotal - discount) + tax).toFixed(2);
+        document.getElementById("display11").innerHTML = "Total: $" + orderTotal;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Eric Duanmu</h2>
+    <h2>10/8/2019</h2>
+    <script language="javascript">
+      var numbers = []
+      while(numbers.length < 5)
+      {
+        var num = Math.floor(Math.random() * 47 + 1);
+        if (numbers.indexOf(num) === -1)
+        {
+          numbers.push(num);
+        }
+      }
+      luckyNum = Math.floor(Math.random() * 17 + 1);
+    </script>
+    <h1>HOMEWORK 4 - PART 1</h1>
+    <h2>Winning numbers</h2>
+    <h3>First five (unordered): <br></h3>
+    <script language="javascript">
+      for (i = 0; i < 5; i++) {
+        document.write(numbers[i] + " ");
+      }
+    </script>
+    <h3>Lucky number: <br></h3>
+    <script language="javascript">
+      document.write(luckyNum);
+      numbers.sort(function(a, b) { return a - b; });
+    </script>
+    <h3>First five numbers (sorted): <br></h3>
+    <script language="javascript">
+      for (i = 0; i < 5; i++)
+      {
+        document.write(numbers[i] + " ");
+      }
+    </script>
+    <br><br><br>
+    <form>
+      <h2>Your numbers</h2>
+      <h4>Please enter 5 numbers between 1 and 48:<br></h4>
+      <input type="text" name="numbersInput" id="numbersInput">
+      <h4>Please enter your lucky number:<br></h4>
+      <input type="text" name="luckyInput" id="luckyInput">
+      <br><br>
+      <input type="button" value="Submit" id="submit" onclick="return processInput();">
+      <br>
+    </form>
+    <p>
+      <span id="displayPayout"></span>
+    </p>
+
+    <br><br><br>
+
+    <h1>HOMEWORK 4 - PART 2</h1>
+    <script language="javascript">
+      var menuHotdogs = {name: "Hotdogs", price: 3.25};
+      var menuFries = {name: "French Fries", price: 2.00};
+      var menuDrinks = {name: "Drinks", price: 1.50};
+      var menu = [menuHotdogs, menuFries, menuDrinks];
+      var orderHotdogs = {name: "Hotdogs", amount: 0};
+      var orderFries = {name: "French Fries", amount: 0};
+      var orderDrinks = {name: "Drinks", amount: 0};
+    </script>
+    <form>
+      <h2>Your order</h2>
+      <h4>Hotdogs:</h4>
+      <input type="number" name="hotdogsOrdered" id="hotdogsOrdered" min="0">
+      <h4>French Fries:</h4>
+      <input type="number" name="friesOrdered" id="friesOrdered" min="0">
+      <h4>Drinks:</h4>
+      <input type="number" name="drinksOrdered" id="drinksOrdered" min="0">
+      <br><br>
+      <input type="button" value="Submit" id="orderSubmit" onclick="return processOrder();">
+    </form>
+    <h2 id="display4"></h2>
+    <p>
+      <span id="display5"></span>
+      <br>
+      <span id="display6"></span>
+      <br>
+      <span id="display7"></span>
+      <br><br>
+      <span id="display8"></span>
+      <br>
+      <span id="display9"></span>
+      <br>
+      <span id="display10"></span>
+      <br><br>
+      <span id="display11"></span>
+    </p>
+  </body>
+</html>
