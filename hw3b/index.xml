@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="stylesheet.css"?>
+<!-- Eric Duanmu
+   COMP 20
+   HW 3B
+   9/26/2019
+   index.xml
+-->
+<contents>
+  <setTitle>The Reunion Tour</setTitle>
+  <band>
+    <bandName>Outkast</bandName>
+    <memberName>Andre 3000</memberName>
+    <memberName>Big Boi</memberName>
+  </band>
+  <setList>
+    <song>
+      <songName>B.O.B.</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>2000</songYear>
+    </song>
+    <song>
+      <songName>Return of the G</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>1998</songYear>
+    </song>
+    <song>
+      <songName>The Whole World</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>2001</songYear>
+    </song>
+    <song>
+      <songName>SpottieOttieDopaliscious</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>1998</songYear>
+    </song>
+    <song>
+      <songName>ATLiens</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>1996</songYear>
+    </song>
+    <song>
+      <songName>Aquemini</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>1998</songYear>
+    </song>
+    <song>
+      <songName>Elevators</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>1996</songYear>
+    </song>
+    <song>
+      <songName>Hey Ya!</songName>
+      <songArtist>Andre 3000</songArtist>
+      <songGenre>Soul / Funk</songGenre>
+      <songYear>2003</songYear>
+    </song>
+    <song>
+      <songName>The Way You Move</songName>
+      <songArtist>Big Boi</songArtist>
+      <songGenre>Hip Hop / Soul</songGenre>
+      <songYear>2003</songYear>
+    </song>
+    <song>
+      <songName>So Fresh, So Clean</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop / Funk</songGenre>
+      <songYear>2000</songYear>
+    </song>
+    <song>
+      <songName>Ms. Jackson</songName>
+      <songArtist>Andre 3000 &amp; Big Boi</songArtist>
+      <songGenre>Hip Hop</songGenre>
+      <songYear>2000</songYear>
+    </song>
+  </setList>
+</contents>
