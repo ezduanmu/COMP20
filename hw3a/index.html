@@ -1,1 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto+Condensed&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>COMP 20 - HW 3A</title>
+    <style>
+      body, html {
+        background-color: #ababab;
+        color: #000000;
+        padding: 0;
+        margin: 0;
+      }
+      header h1 {
+        text-align: center;
+        font-family: 'Lobster', cursive, arial, helvetica;
+        font-size: 46px;
+        text-shadow: 3px 3px 3px #000000;
+      }
+      h1.heading {
+        color: #000000;
+        text-align: center;
+        font-family: 'Lobster', cursive, arial, helvetica;
+        font-size: 34px;
+      }
+      h1.subheading {
+        color: #000000;
+        text-align: center;
+        font-family: 'Lobster', cursive, arial, helvetica;
+        font-size: 28px;
+        text-decoration: underline;
+      }
+      p {
+        font-family: 'Roboto Condensed', sans-serif;
+        color: #000000;
+        font-size: 16px;
+      }
+      header {
+        background-color: #ababab;
+        color: #FFFFFF;
+        padding: 20px 40px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      nav {
+        font-family: 'Roboto Condensed', sans-serif;
+        background-color: #ec19ff;
+        padding: 15px 0;
+      }
+      nav a {
+        color: #000000;
+        font-size: 19px;
+        text-decoration: none;
+        margin: 50px;
+      }
+      nav ul {
+        list-style-type: circle;
+        list-style-position: inside
+      }
+      nav ul li{
+        display: inline-block;
+      }
+      input.searchButton {
+        font-family: 'Roboto Condensed', sans-serif;
+        color: #FFFFFF;
+        font-size: 18px;
+        background-color: #292929;
+        width: 100px;
+        height: 30px;
+      }
+      input.searchQuery {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 16px;
+        width: 230px;
+        height: 30px;
+      }
 
+      footer {
+        color:
+        width: 100%;
+        position: absolute;
+        font-size: 16px;
+        background-color: #FFFFFF
+      }
+      .container {
+        width: 100%;
+      }
+      .article {
+        background-color: #FFFFFF;
+        padding: 10px 10px 10px 10px;
+        width: 1050px;
+        height: 650px;
+        margin: 10px 0px 10px 0px;
+        float: left;
+      }
+      .sideBar {
+        background-color: #ec19ff;
+        width: 300px;
+        height: 650px;
+        margin: 10px 0px 10px 0px;
+        float: right;
+      }
+      ul.sideBar {
+        color: #000000;
+      }
+      a {
+        font-size: 18px;
+        padding-left: 45px;
+        padding-right: 15px;
+        padding-bottom: 30px;
+        color: #0000FF;
+        text-decoration: underline;
+        list-style-position: outside;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Header</h1>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">HOME</a>
+        </li>
+        <li>
+          <a href="#">OUR TEAM</a>
+        </li>
+        <li>
+          <a href="#">PROJECTS</a>
+        </li>
+        <li>
+          <a href="#">CONTACT</a>
+        </li>
+        <li>
+          <form>
+            <input class="searchQuery" type="text" name="searchQuery" placeholder="Search query">
+            <input class="searchButton" type="submit" name="searchButton" value="Go!">
+          </form>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="article" style="background-color: #FFFFFF">
+        <h1 class="heading">Article heading</h1>
+        <p>Lorem ipsum dolor sit amen, consectetur adipisicing elit, Donec a diam lectus. Set sit smet ipsum mauris. Maecenas coniuge ligula as kwam viverra nec convecteur ant hendrerit. Donec et mollis dolor. Present et diam eget libero egestas mattis sit smet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.</p>
+        <h1 class="subheading">subsection</h1>
+        <p>Donec ut librero sed accu vehicula ultricles a non tortor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aenean ut gravida lorem. Ut turpis fells, pulvinar a semper sed, adipiscing id dolor.<br><br>
+        Pelientesque auctor nisi id magna consequat sagittis. Curabitur dapibus, enim sit amet elit pharetra tincidunt feugiat nist imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros.</p>
+        <h1 class="subheading">Another subsection</h1>
+        <p>Donec viverra mi quis quam pulvinar at malesada arcu rhonous. Cum soclis natoque penatibus et manis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Maur is vitae nisi at sem facilisis semper ac in est. <br><br>
+        Vivamus fermentum semper porta. Nunc diam velit, adipscing ut tristique vitae sagittis vel odio. Maecenas convalis ullamcorper ultricied. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, is fringile sem nunc vet mi.
+      </div>
+      <div class="sideBar">
+        <h1 class="heading">Related</h1>
+          <li>
+            <a href = "#">Oh I do like to be beside the seaside</a>
+          </li>
+          <li>
+            <a href = "#">Oh I do like to be beside the sea</a>
+          </li>
+          <li>
+            <a href = "#">Although in the North of England</a>
+          </li>
+          <li>
+            <a href = "#">It never stops raining</a>
+          </li>
+          <li>
+            <a href = "#">Oh well...</a>
+          </li>
+      </div>
+    </div>
+
+  </body>
+</html>
