@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COMP 20 - HW 8</title>
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        font-family: "Comic Sans MS";
+        background-color: #00fffb;
+      }
+      #scrollDown {
+        font-size: 40px;
+        position: absolute;
+        right: 100px;
+        top: 500px;
+      }
+      #catContainer {
+        margin: auto;
+        width: 500px;
+        height: 500px;
+        max-width: 500px;
+        max-height: 500px;
+        border: solid 2px #000;
+        background-color: #FFF;
+      }
+      .catPic {
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+        max-height: 500px;
+      }
+      #newRandomButton {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+    <script>
 
+    function getRandom() {
+      request = new XMLHttpRequest();
+      request.open("GET", "https://api.thecatapi.com/v1/images/search", true);
+      request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+          imageData = JSON.parse(request.responseText);
+          document.getElementById("catContainer").innerHTML ="<img class='catPic' src='" + imageData[0]["url"] + "'>";
+        }
+        else if (request.readyState == 4 && request.status != 200) {
+          document.getElementById("catContainer").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+        }
+        else if (request.readyState == 3) {
+          document.getElementById("catContainer").innerHTML = "Too soon!  Try again";
+        }
+      }
+      request.send();
+    }
+    getRandom();
+    function getBreed(breed) {
+      request = new XMLHttpRequest();
+      request.open("GET", ("https://api.thecatapi.com/v1/images/search?breed_ids=" + breed), true);
+      request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+          imageData = JSON.parse(request.responseText);
+          document.getElementById("catContainer").innerHTML ="<img class='catPic' src='" + imageData[0]["url"] + "'>";
+        }
+        else if (request.readyState == 4 && request.status != 200) {
+          document.getElementById("catContainer").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+        }
+        else if (request.readyState == 3) {
+          document.getElementById("catContainer").innerHTML = "Too soon!  Try again";
+        }
+      }
+      request.send();
+    }
+    </script>
+  </head>
+  <body>
+    <center>
+      <h1>random generator of tumblr pics and gifs of cats</h1>
+      <h4>click a button and generate a new cat!</h5>
+      <div id="catContainer"></div>
+      <div id="scrollDown">Scroll down!</div>
+      <input type="button" id="newRandomButton" value="Random Breed" onclick="return getRandom();"><br>
+      <input type="button" id="newBengButton" value="Bengal" onclick="return getBreed('beng');">
+      <input type="button" id="newHimaButton" value="Himalayan" onclick="return getBreed('hima');">
+      <input type="button" id="newKoraButton" value="Korat" onclick="return getBreed('kora');">
+      <br><br><br><br>
+      <h2>Describe the API you selected and what it does</h2>
+      <p>
+        I used an API that generates random cat images (or gifs) that have been upload to Tumblr<br>
+        This API allows for specification of breed, file type (jpeg, png, gif), 'categories' (ex: cats wearing hats)<br>
+        There are also around 30 different attributes for each breed which give specific information
+      </p>
+      <h2>Cite the website where you found it</h2>
+      <p>
+        Originally found on: <a href="https://github.com/public-apis/public-apis">https://github.com/public-apis/public-apis</a><br>
+        Official API website: <a href="https://docs.thecatapi.com/">https://docs.thecatapi.com/</a>
+      </p>
+      <h2>Describe the options you used for the API request</h2>
+      <p>
+        I used two options from this API: random cat image generator, and breed-specific cat image generator <br>
+        By default, the image shown is a random breed. However, if the user clicks any of the three specific breed buttons, a random cat of that breed will be shown.
+      </p>
+      <h2>Give two applications where this API would be helpful</h2>
+      <p>
+        1. Humor/comedy application of random silly cats<br>
+        2. Cat-related businesses can use their JSON data for information on different breeds
+      </p>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body
+</html>
