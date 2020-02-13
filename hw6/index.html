@@ -1,1 +1,182 @@
+<!doctype html>
+<html>
+  <head>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>COMP 20 - HW 6</title>
+
+    <style>
+    image.thumbnail {
+      display: block;
+      margin: auto;
+      max-width: 200px;
+      max-height: 50px;
+      z-index: -2;
+    }
+    .largeContainer {
+      position: relative;
+      padding: 5px;
+      margin-top: 40px;
+      width: 60%;
+      height: 450px;
+    }
+    .gallery {
+      max-height: 200px;
+    }
+    .overlay {
+      background-color: #FFF;
+      display: none;
+      opacity: 0.8;
+    }
+    .thumbnailContainer {
+      text-align: center;
+      display: inline-block;
+      padding: 10px;
+      vertical-align: top;
+    }
+    .info {
+      text-align: center;
+      margin-top: -50px;
+      opacity: 1;
+    }
+    </style>
+
+  </head>
+  <body>
+
+    <center>
+
+      <div class="gallery">
+
+        <div class="thumbnailContainer">
+          <image class="thumbnail" id="display1"> </image>
+          <div class="overlay">
+            <p class="info" id="info1"></p>
+          </div>
+        </div>
+
+        <div class="thumbnailContainer">
+          <image class="thumbnail" id="display2"> </image>
+          <div class="overlay">
+            <p class="info" id="info2"></p>
+          </div>
+        </div>
+
+        <div class="thumbnailContainer">
+          <image class="thumbnail" id="display3"> </image>
+          <div class="overlay">
+            <p class="info" id="info3"></p>
+          </div>
+        </div>
+
+        <div class="thumbnailContainer">
+          <image class="thumbnail" id="display4"> </image>
+          <div class="overlay">
+            <p class="info" id="info4"></p>
+          </div>
+        </div>
+
+        <div class="thumbnailContainer">
+          <image class="thumbnail" id="display5"> </image>
+          <div class="overlay">
+            <p class="info" id="info5"></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="largeContainer">
+        <center>
+        <image class="largeImage" id="largeDisplay">
+        </center>
+      </div>
+
+    </center>
+
+    <script language="javascript" type="text/javascript">
+      var gallery = [
+        {
+          name: "Salvator Mundi",
+          price: "$460.3 million",
+          smallImage: "salvatormundi.jpg",
+        },
+        {
+          name: "The Card Players",
+          price: "$278 million",
+          smallImage: "cardplayers.jpg",
+        },
+        {
+          name: "Wasserschlangen II",
+          price: "$197.7 million",
+          smallImage: "wasserschlangen.jpg",
+        },
+        {
+          name: "Nu Couche",
+          price: "$170.4 million",
+          smallImage: "nucouche.jpg",
+        },
+        {
+          name: "Portrait of Dr. Gachet",
+          price: "$158.2 million",
+          smallImage: "drgachet.jpg",
+        }
+      ];
+
+    document.getElementById("info1").innerHTML = gallery[0].name + "<br>" + gallery[0].price;
+    document.getElementById("info2").innerHTML = gallery[1].name + "<br>" + gallery[1].price;
+    document.getElementById("info3").innerHTML = gallery[2].name + "<br>" + gallery[2].price;
+    document.getElementById("info4").innerHTML = gallery[3].name + "<br>" + gallery[3].price;
+    document.getElementById("info5").innerHTML = gallery[4].name + "<br>" + gallery[4].price;
+
+    var display1 = document.getElementById("display1");
+    var display2 = document.getElementById("display2");
+    var display3 = document.getElementById("display3");
+    var display4 = document.getElementById("display4");
+    var display5 = document.getElementById("display5");
+    var largeDisplay = document.getElementById("largeDisplay");
+
+    display1.src = gallery[0].smallImage;
+    display1.height = 200;
+    display1.maxWidth = 200;
+    display2.src = gallery[1].smallImage;
+    display2.height = 200;
+    display2.maxWidth = 200;
+    display3.src = gallery[2].smallImage;
+    display3.height = 200;
+    display3.maxWidth = 200;
+    display4.src = gallery[3].smallImage;
+    display4.height = 200;
+    display4.maxWidth = 200;
+    display5.src = gallery[4].smallImage;
+    display5.height = 200;
+    display5.maxWidth = 200;
+
+    $(document).ready(
+      $(".thumbnail").hover(
+        function() {
+          $(".largeImage").attr("src", $(this).attr("src"));
+          $(".largeImage").attr("height", "450px");
+
+          $(".largeImage").attr("position", "absolute");
+          $(".largeImage").attr("left", "50%");
+          $(".largeImage").attr("right", "50%");
+
+          $(".largeImage").fadeIn();
+        },
+        function() {
+          $(".largeImage").hide();
+        }
+      )
+    );
+
+    $(document).ready(
+      $(".thumbnailContainer").on("click", function()
+      {
+        $(this).children(".overlay").show();
+        $(this).children(".overlay").delay(5000).fadeOut();
+      })
+    );
+
+    </script>
+  </body>
+</html>
