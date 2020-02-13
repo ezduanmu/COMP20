@@ -1,1 +1,171 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>COMP 20 - HW 5A</title>
+    <style>
+      body, html {
+        font-family: helvetica;
+      }
+      form {
+        border: solid 3px;
+        padding: 5px;
+      }
+    </style>
+    <script language="javascript">
+      function printNumbers()
+      {
+        var num1 = document.getElementById("number1").value;
+        var num2 = document.getElementById("number2").value;
+        var string = "You entered: " + num1 + " and " + num2
+        document.getElementById("displayAmicable6").innerHTML = string;
+      }
 
+      function isFactor(number, testNumber)
+      {
+        if (number % testNumber == 0)
+        {
+          return true;
+        } else
+        {
+          return false;
+        }
+      }
+
+      /* function showFactors1(arr)
+      {                                     //These showFactors functions actually
+        var arrString = "";                 //print within the function (instead of returning a string),
+        for (i = 0; i < arr.length; i++)    //however I couldn't figure out how to call it twice
+        {                                   //to print to two different places each time
+          arrString += arr[i] + " ";        //so I settled for the showFactors function below which
+        }                                   //returns the string to print
+        document.getElementById("displayFactors1").innerHTML = arrString;
+      }
+
+      function showFactors2(arr)
+      {
+        var arrString = "";
+        for (i = 0; i < arr.length; i++)
+        {
+          arrString += arr[i] + " ";
+        }
+        document.getElementById("displayFactors2").innerHTML = arrString;
+      } */
+
+      function showFactors(arr)
+      {
+        var arrString = "";
+        for (i = 0; i < arr.length; i++)
+        {
+          arrString += arr[i] + " ";
+        }
+        return arrString;
+      }
+
+      function addFactors(arr)
+      {
+        var sum = 0;
+        for (i = 0; i < arr.length; i++)
+        {
+          sum += arr[i];
+        }
+        return sum;
+      }
+
+      function getFactors(a)
+      {
+        var factorsArray = [];
+        for (i = 0; i < a; i++)
+        {
+          if (isFactor(a, i))
+          {
+            factorsArray.push(i);
+          }
+        }
+        return factorsArray;
+      }
+
+      function amicable()
+      {
+        printNumbers();
+        var input1 = document.getElementById("number1").value;
+        var input2 = document.getElementById("number2").value;
+        var print1 = "";
+        if ((addFactors(getFactors(input1)) == input2) && (addFactors(getFactors(input2)) == input1))
+        {
+          document.getElementById("displayAmicable1").innerHTML = input1 + " and " + input2 + " are amicable.";
+          document.getElementById("displayAmicable2").innerHTML = "<br>Factors of " + input1 + ": ";
+          //showFactors1(getFactors(input1));  //original calling of showFactors1
+          document.getElementById("displayFactors1").innerHTML = showFactors(getFactors(input1)); //calling showFactors instead
+
+          document.getElementById("displayAmicable4").innerHTML = "<br>Sum to: " + addFactors(getFactors(input1));
+          document.getElementById("displayAmicable3").innerHTML = "<br>Factors of " + input2 + ": ";
+          //showFactors2(getFactors(input2));  //original calling of showFactors2
+          document.getElementById("displayFactors2").innerHTML = showFactors(getFactors(input2)); //calling showFactors instead
+
+          document.getElementById("displayAmicable5").innerHTML = "<br>Sum to: " + addFactors(getFactors(input2));
+        } else
+        {
+          document.getElementById("displayAmicable1").innerHTML = input1 + " and " + input2 + " are not amicable.";
+          document.getElementById("displayAmicable2").innerHTML = "<br>Factors of " + input1 + ": ";
+          //showFactors1(getFactors(input1));  //original calling of showFactors1
+          document.getElementById("displayFactors1").innerHTML = showFactors(getFactors(input1)); //calling showFactors instead
+
+          document.getElementById("displayAmicable4").innerHTML = "<br>Sum to: " + addFactors(getFactors(input1));
+          document.getElementById("displayAmicable3").innerHTML = "<br>Factors of " + input2 + ": ";
+          //showFactors2(getFactors(input2));  //original calling of showFactors2
+          document.getElementById("displayFactors2").innerHTML = showFactors(getFactors(input2)); //calling showFactors instead
+
+          document.getElementById("displayAmicable5").innerHTML = "<br>Sum to: " + addFactors(getFactors(input2));
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Eric Duanmu</h2>
+    <h2>COMP 20 - HW 5A</h2>
+    <h2>10/8/2019</h2>
+    <h2>Enter two numbers and see if they are amicable!</h2>
+    <form>
+      <h4>First number:</h4>
+      <input type="number" name="number1" id="number1">
+      <h4>Second number:</h4>
+      <input type="number" name="number2" id="number2">
+      <br><br>
+      <input type="button" value="Submit" name="submit" id="submit" onclick="return amicable();">
+    </form>
+
+    <!--
+    <p><span id="displayNumbers"></span></p>
+    -->
+
+    <!--
+    <p><span id="displayTest2"></span></p>
+    <p><span id="displayTest3"></span></p>
+    -->
+    <p>
+      <span id="displayAmicable6"></span><br>
+      <span id="displayAmicable1"></span><br>
+      <span id="displayAmicable2"></span><br>
+      <span id="displayFactors1"></span><br>
+      <span id="displayAmicable4"></span><br>
+      <span id="displayAmicable3"></span><br>
+      <span id="displayFactors2"></span><br>
+      <span id="displayAmicable5"></span><br>
+    </p>
+
+    <!-- CHANGE VALUES TO TEST - SHOULD PRINT "false" when not a factor and "true" for factors
+    <input type="button" value="Test isFactor()" name="test1" id="test1" onclick="return isFactor(10, 2);">
+    <p><span id="displayTest1"></span></p>
+    -->
+
+    <!-- CHANGE VALUES TO TEST - SHOULD PRINT THE ARRAY IN ORDER SEPARATED BY ", "
+    <input type="button" value="Test showFactors()" name="test1" id="test1" onclick="return showFactors1([1, 3, 5, 'ab', 'eric']);">
+    -->
+
+    <!-- CHANGE VALUES TO TEST - SHOULD PRINT THE SUM OF THE ELEMENTS IN THE ARRAY
+      <input type="button" value="Test addFactors()" name="test1" id="test1" onclick="document.getElementById('displayTest3').innerHTML = addFactors([1, 2, 3, 9, 10])">
+    -->
+
+  </body>
+</html>
